@@ -1,10 +1,10 @@
-\name{last.points}
+\name{left.points}
 \Rdversion{1.1}
-\alias{last.points}
-\title{last points}
-\description{Positioning Function for the last of a group of points.}
+\alias{left.points}
+\title{left points}
+\description{  dl.indep(data.frame(d[which.min(d$x),],hjust=1,vjust=0.5))}
 \usage{
-last.points(d, ...)
+left.points(d, ...)
 }
 \arguments{
   \item{d}{

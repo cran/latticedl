@@ -1,10 +1,10 @@
-\name{last.points}
+\name{bottom.points}
 \Rdversion{1.1}
-\alias{last.points}
-\title{last points}
-\description{Positioning Function for the last of a group of points.}
+\alias{bottom.points}
+\title{bottom points}
+\description{Positioning Function for the bottom of a group of points.}
 \usage{
-last.points(d, ...)
+bottom.points(d, ...)
 }
 \arguments{
   \item{d}{

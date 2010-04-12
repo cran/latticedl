@@ -1,13 +1,13 @@
-\name{dl.indep}
+\name{dl.trans}
 \Rdversion{1.1}
-\alias{dl.indep}
-\title{ Direct label groups independently}
-\description{Makes a function you can use to specify the location of each group independently.}
+\alias{dl.trans}
+\title{ Direct label data transform}
+\description{Make a function that transforms the data. This is for conveniently making a function that calls transform on the data frame, with the arguments provided. See examples.}
 \usage{
-dl.indep(expr)
+dl.trans(...)
 }
 \arguments{
-  \item{expr}{Expression that takes a subset of the d data frame, with data from only a single group, and returns the direct label position.}
+  \item{\dots}{Arguments to pass to transform.}
 }
 \details{
 }

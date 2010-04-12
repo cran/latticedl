@@ -8,7 +8,7 @@
 \tabular{ll}{Package: \tab latticedl\cr
 Maintainer: \tab Toby Dylan Hocking <toby.hocking@inria.fr>\cr
 Author: \tab Toby Dylan Hocking\cr
-Version: \tab 1.0\cr
+Version: \tab 1.1\cr
 License: \tab GPL-3\cr
 Title: \tab Lattice direct labels\cr
 Description: \tab Direct labeling functions that use the lattice package.\cr

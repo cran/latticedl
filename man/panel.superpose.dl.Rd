@@ -2,17 +2,17 @@
 \Rdversion{1.1}
 \alias{panel.superpose.dl}
 \title{panel superpose dl}
-\description{Call panel.superpose with the data and then the direct labels.}
+\description{Call panel.superpose for the data points and then for the direct labels. This is a proper lattice panel function that behaves much like panel.superpose.}
 \usage{
 panel.superpose.dl(x, y = NULL, subscripts, groups, panel.groups, method = NULL, .panel.superpose = panel.superpose, type = "p", ...)
 }
 \arguments{
-  \item{x}{vector of x values.}
-  \item{y}{vector of y values.}
-  \item{subscripts}{subscripts of x,y,groups.}
-  \item{groups}{vector of group ids.}
+  \item{x}{Vector of x values.}
+  \item{y}{Vector of y values.}
+  \item{subscripts}{Subscripts of x,y,groups.}
+  \item{groups}{Vector of group ids.}
   \item{panel.groups}{To be parsed for default labeling method, and passed to panel.superpose.}
-  \item{method}{Direct labeling method, see direct.label for details.}
+  \item{method}{Method for direct labeling as described in ?label.positions.}
   \item{.panel.superpose}{The panel function to use for drawing data points.}
   \item{type}{Plot type, used for default method dispatch.}
   \item{\dots}{Additional arguments to panel.superpose.}

@@ -62,3 +62,16 @@ png("compare-long.png",h=800,w=1000)
 compare.methods(c("first.points","last.points"),
                 xyplot,BodyWeight,weight~Time|Diet,Rat,type="l",layout=c(3,1))
 dev.off()
+
+
+pdf("method.pdf");direct.label(dotplot(VADeaths,type="l",xlim=c(5,85)),method=list("last.points",rot=30));dev.off();system("evince method.pdf")
+
+pdf("method2.pdf",h=4)
+complicated <- list(dl.trans(x=x+10),
+                    dl.indep(d[-2,]),
+                    rot=c(30,180))
+direct.label(
+             dotplot(VADeaths,type="o")
+             ,method=complicated)
+dev.off()
+system("convert -density 2000 -geometry 800x600 method2.pdf method2.png && display method2.png")

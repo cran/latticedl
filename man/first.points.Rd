@@ -2,7 +2,7 @@
 \Rdversion{1.1}
 \alias{first.points}
 \title{first points}
-\description{Positioning Function for first points of longitudinal data.}
+\description{Positioning Function for the first of a group of points.}
 \usage{
 first.points(d, ...)
 }

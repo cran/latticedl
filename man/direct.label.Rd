@@ -2,13 +2,13 @@
 \Rdversion{1.1}
 \alias{direct.label}
 \title{direct label}
-\description{Add direct labels to a grouped lattice plot. The idea is that we parse the trellis object returned by the high level plot function and return it changed such that it will plot direct labels.}
+\description{Add direct labels to a grouped lattice plot. This works by parsing the trellis object returned by the high level plot function, and returning it with a new panel function that will plot direct labels using the specified method.}
 \usage{
 direct.label(p, method = NULL, debug = FALSE)
 }
 \arguments{
   \item{p}{The lattice plot (result of a call to a high-level lattice function).}
-  \item{method}{Method for direct labeling, specified in one of the following ways: (1) a function that takes the data and returns the positions of direct labels, (2) the name of such a function as a character string, or (3) a list of such functions or names, which will be applied in order to transform the original data into direct label positions. Named elements of this list, will be copied to the resulting label position data frame. See examples. Functions used here should be Positioning Functions, function(d,...), where d is a data frame of the points to plot, with columns x y groups. NULL indicates to make a logical choice based on the high-level plot function chosen. Default method dispatch is done in panel.superpose.dl, and processing this argument is done in label.positions.}
+  \item{method}{Method for direct labeling as described in ?label.positions.}
   \item{debug}{Show debug output?}
 }
 \details{
@@ -86,16 +86,20 @@ plot(direct.label(
 
 data(Chem97,package="mlmRev")
 qqm <- qqmath(~gcsescore,Chem97,groups=gender,
-              type=c("p","g"),f.value=ppoints(100),auto.key=TRUE)
-direct.label(qqm)
+              type=c("p","g"),f.value=ppoints(25),auto.key=TRUE)
+plot(direct.label(qqm))
 static.labels <- data.frame(x=c(-2,0),y=c(6,4),groups=c("F","M"))
-direct.label(qqm,method=function(d,...)static.labels,debug=TRUE)
-direct.label(qqm,method=static.labels,debug=TRUE)
+plot(direct.label(qqm,method=function(d,...)static.labels,debug=TRUE))
+plot(direct.label(qqm,method=static.labels,debug=TRUE))
 ## Should work: static.labels overwrites values from
 ## last.points. Applying last.points should change the hjust as well:
-direct.label(qqm,method=c("last.points",static.labels),debug=TRUE)
-direct.label(qqm,method=c(static.labels,"last.points"),debug=TRUE)
-direct.label(qqmath(~gcsescore|gender,Chem97,groups=factor(score),
-                    type=c('l','g'),f.value=ppoints(100)))
+plot(direct.label(qqm,method=c("last.points",static.labels),debug=TRUE))
+plot(direct.label(qqm,method=c(static.labels,"last.points"),debug=TRUE))
+plot(direct.label(qqmath(~gcsescore|gender,Chem97,groups=factor(score),
+                    type=c('l','g'),f.value=ppoints(100))))
 
-direct.label(dotplot(VADeaths,type="o"),method=list("last.points",rot=30))}
+plot(direct.label(densityplot(~gcsescore,Chem97,groups=factor(score))))
+## This would be more effective superimposed:
+plot(direct.label(densityplot(~gcsescore|gender,Chem97,groups=factor(score),layout=c(1,2))))
+
+plot(direct.label(dotplot(VADeaths,type="o"),method=list("last.points",rot=30)))}

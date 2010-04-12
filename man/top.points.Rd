@@ -2,7 +2,7 @@
 \Rdversion{1.1}
 \alias{top.points}
 \title{top points}
-\description{Positioning Function for the mode of a density estimate.}
+\description{Positioning Function for the top of a group of points.}
 \usage{
 top.points(d, ...)
 }

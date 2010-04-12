@@ -3,7 +3,7 @@
 \alias{need.trans}
 \docType{data}
 \title{need trans}
-\description{Functions need translation before applying positioning function.}
+\description{Functions which need translation before applying positioning function.}
 \usage{need.trans}
 \format{
   The format is:

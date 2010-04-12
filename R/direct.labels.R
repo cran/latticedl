@@ -1,4 +1,4 @@
-### Functions need translation before applying positioning function.
+### Functions which need translation before applying positioning function.
 need.trans <- c("qqmath","densityplot")
 dl.text <- function
 ### To be used as panel.groups= argument in panel.superpose. Analyzes
@@ -32,25 +32,15 @@ dl.text <- function
             default.units="native")
 }
 direct.label <- function
-### Add direct labels to a grouped lattice plot. The idea is that we
-### parse the trellis object returned by the high level plot function
-### and return it changed such that it will plot direct labels.
+### Add direct labels to a grouped lattice plot. This works by parsing
+### the trellis object returned by the high level plot function, and
+### returning it with a new panel function that will plot direct
+### labels using the specified method.
 (p,
-### The lattice plot (result of a call to a high-level lattice function).
+### The lattice plot (result of a call to a high-level lattice
+### function).
  method=NULL,
-### Method for direct labeling, specified in one of the following
-### ways: (1) a function that takes the data and returns the positions
-### of direct labels, (2) the name of such a function as a character
-### string, or (3) a list of such functions or names, which will be
-### applied in order to transform the original data into direct label
-### positions. Named elements of this list, will be copied to the
-### resulting label position data frame. See examples. Functions used
-### here should be Positioning Functions, function(d,...), where d is
-### a data frame of the points to plot, with columns x y groups. NULL
-### indicates to make a logical choice based on the high-level plot
-### function chosen. Default method dispatch is done in
-### panel.superpose.dl, and processing this argument is done in
-### label.positions.
+### Method for direct labeling as described in ?label.positions.
  debug=FALSE
 ### Show debug output?
  ){
@@ -68,20 +58,22 @@ direct.label <- function
 ### The lattice plot.
 }
 panel.superpose.dl <- function
-### Call panel.superpose with the data and then the direct labels.
+### Call panel.superpose for the data points and then for the direct
+### labels. This is a proper lattice panel function that behaves much
+### like panel.superpose.
 (x,
-### vector of x values.
+### Vector of x values.
  y=NULL,
-### vector of y values.
+### Vector of y values.
  subscripts,
-### subscripts of x,y,groups.
+### Subscripts of x,y,groups.
  groups,
-### vector of group ids.
+### Vector of group ids.
  panel.groups,
 ### To be parsed for default labeling method, and passed to
 ### panel.superpose.
  method=NULL,
-### Direct labeling method, see direct.label for details.
+### Method for direct labeling as described in ?label.positions.
  .panel.superpose=panel.superpose,
 ### The panel function to use for drawing data points.
  type="p",
@@ -116,21 +108,23 @@ panel.superpose.dl <- function
   panel.superpose(panel.groups=dl.text,labs=labs,type=type,x=x,
                   groups=groups,subscripts=subscripts,...)
 }
-dl <- function
-### Shortcut for a lattice plot with direct labels. See direct.label
-### for a more precise description.
+dl <- function # Quick lattice direct label plot
+### Shortcut for a lattice plot with direct labels. This is a
+### convenience function so you do not have to explicitly type
+### groups=. This simply constructs the lattice plot and then calls
+### direct.label on it.
 (lattice.fun,
 ### High-level lattice plot function to use.
  data,
-### Data frame to use.
+### Data to use.
  x,
 ### Lattice model formula.
  groups,
 ### To be passed to lattice as groups= argument.
  method=NULL,
-### Direct labeling method, see direct.label for details.
+### Method for direct labeling as described in ?label.positions.
  debug=FALSE,
-### Show debugging output? to be passed to direct.label.
+### Show debug output?
  ...
 ### Other arguments to be passed to lattice.fun.
  ){
